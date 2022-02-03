@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+@keyframes tlo { from {background: rgb(0, 0, 0, 0)} to {background: rgb(255, 255, 255, 0.3)} }
+
+body {
+    background: darkgray;
+    overflow: hidden;
+    margin: 20px;
+}
+
+#header {
+    margin: -20px;
+    width: 100vw;
+    background-color: black;
+    color: whitesmoke;
+    padding: 5px 2% 0 2%;
+    box-sizing: border-box;
+    height: auto;
+    font-size: xx-large;
+    float: left;
+}
+
+#header .text {
+    font-family: 'Comforter', Arial, sans-serif;
+    width: auto;
+}
+
+#player {
+    height: 70px;
+    position: absolute;
+    margin: -20px;
+    margin-top: 100vh;
+    width: 100vw;
+    transition: margin-top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 3;
+}
+
+#player.show {
+    margin-top: calc(100vh - 88px);
+}
+
+#player .info {
+    background-color: rgb(0, 0, 0, 0.7);
+    height: 60px;
+    color: white;
+}
+
+#player > #timer {
+    background: sandybrown;
+    width: 0;
+    height: 10px;
+    border-right: 5px solid seashell;
+    box-sizing: border-box;
+}
+
+#player #info, #player .buttons {
+    float: left; 
+    height: 100%;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+#player #info {
+    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 0.5%;
+    width: calc(100% - 200px);
+    font-size: 18px;
+}
+
+#player #info span.authors {
+    font-size: 12px;
+}
+
+#player .buttons {
+    padding-top: 0.4%;
+    width: 200px;
+}
+
+#player .buttons > button {
+    border-radius: 3%;
+    background:rgb(0, 0, 0, 0);
+    width: 44px;
+    height: 44px;
+    font-size: 30px;
+    color: white;
+    border: 0px solid rgb(0, 0, 0, 0);
+}
+
+#player .buttons > button#pause {
+    margin-top: -6px;
+    padding-top: 6px;
+}
+
+#player .buttons > button:hover {
+    background: rgba(255, 255, 255, 0.302);
+    animation-name: tlo;
+    animation-duration: 0.1s;
+}
+
+#playlists {
+    width: 97%;
+    position: fixed;
+    margin-top: 40px;
+    height: 70vh;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#playlists .playlist {
+    margin-top: 2px;
+    width: 100%;
+    height: 150px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#playlists .playlistImg {
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+
+#playlists .playlistInfo {
+    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 35px;
+    width: auto;
+    float: left;
+}
+
+#playlists .playlistInfo > span.authors {
+    font-size: 17px;
+}
+
+#playlists .playlistInfo > span.description {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 15px;
+}
+
+#playlists .playlistInfo > button {
+    background: rgb(13, 169, 180);
+    border-radius: 2rem;
+    width: 100px;
+    height: 35px;
+    border: 5px double black;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#playlists .playlistInfo > button:hover {
+    border-radius: 0.5rem;
+    background: rgb(6, 232, 248);
+}
