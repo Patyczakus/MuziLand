@@ -59,6 +59,10 @@ function playerOn(source) {
 
 function playerOff() {
     try { document.getElementById("player").classList.remove("show") } catch (err) {}
+
+    sound.pause()
+    sound.currentTime = 0;
+    sound_i++
 }
 
 function playSound() {
