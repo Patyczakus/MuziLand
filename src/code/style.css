@@ -45,11 +45,16 @@ body {
 }
 
 #player > #timer {
-    background: sandybrown;
+    background: rgb(73, 160, 56);
     width: 0;
     height: 10px;
     border-right: 5px solid seashell;
     box-sizing: border-box;
+    transition: background 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#player > #timer.stop {
+    background: rgb(244, 96, 96);
 }
 
 #player #info, #player .buttons {
@@ -62,7 +67,7 @@ body {
 #player #info {
     font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 0.5%;
-    width: calc(100% - 200px);
+    width: calc(100% - 250px);
     font-size: 18px;
 }
 
@@ -72,10 +77,11 @@ body {
 
 #player .buttons {
     padding-top: 0.4%;
-    width: 200px;
+    width: 250px;
 }
 
 #player .buttons > button {
+    font-family: "Segoe UI Symbol";
     border-radius: 3%;
     background:rgb(0, 0, 0, 0);
     width: 44px;
@@ -83,11 +89,6 @@ body {
     font-size: 30px;
     color: white;
     border: 0px solid rgb(0, 0, 0, 0);
-}
-
-#player .buttons > button#pause {
-    margin-top: -6px;
-    padding-top: 6px;
 }
 
 #player .buttons > button:hover {

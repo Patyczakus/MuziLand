@@ -1,9 +1,10 @@
 var sound = new Audio()
-var time = 0
+var clicks = 0
 var sound_i = 0
 var playlistID = -1
 var text = ""
 let i, iSystem
+var nextVar = false
 const data = {
    "dev": "patYczakus",
    "playlists": [
@@ -50,9 +51,9 @@ window.onload = function() {
 
 function playerOn(source) {
     sound.volume = 0
-    try { document.getElementById("player").classList.add("show") } catch (err) {}
+    try { document.getElementById("player").classList.add("show"); document.getElementById("timer").classList.remove("stop") } catch (err) {}
     sound = new Audio(`./src/music/sounds/${source}`)
-    isStop = false
+    nextVar = false
     setTimeout(function(){sound.volume = document.getElementById("value").value / 100; playSound()}, 1000)
 }
 
@@ -65,11 +66,10 @@ function playSound() {
     sound.play()
 }
 
-function playerTimer() {
-    time = time + 0.25
-    document.getElementById("timer").style.width = `${time / sound.duration * 101}%`
-    if (document.getElementById("timer").style.width.replace("%", "") >= 100) next() 
-    else setTimeout(playerTimer, 250)
+function playerTimer() /* Czas */ {
+    document.getElementById("timer").style.width = `${sound.currentTime / sound.duration * 100}%`
+    if (document.getElementById("timer").style.width.replace("%", "") >= 100 || nextVar) next() 
+    else setTimeout(playerTimer, 100)
 }
 
 function volume() {
@@ -78,7 +78,6 @@ function volume() {
 
 //------------------------------------------
 function albumPlay(ID) {
-    if (ID == playlistID) return
     playlistID = ID
     sound_i = 0
 
@@ -92,9 +91,11 @@ function albumPlay(ID) {
 }
 
 function next() {
-    isStop = true
-    time = 0
+    nextVar = false
     document.getElementById("timer").style.width = 0
+    clicks = 0
+    document.getElementById("pause").innerText = "⏸"
+    document.getElementById("timer").classList.remove("stop")
     sound.pause()
     sound.currentTime = 0;
     sound_i++
@@ -109,4 +110,18 @@ function next() {
     else playerOff()
 }
 
-function skip() { time = sound.duration }
+function skip() { nextVar = true }
+
+function soundChange() /* Czyli pauza */ {
+    clicks++
+    clicks = clicks % 2
+    document.getElementById("timer").classList.toggle("stop")
+    if (clicks) { 
+        sound.pause()
+        document.getElementById("pause").innerText = "▶"
+    }
+    else {
+        sound.play()
+        document.getElementById("pause").innerText = "⏸"
+    }
+}
