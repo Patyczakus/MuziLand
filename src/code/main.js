@@ -5,6 +5,7 @@ var playlistID = -1
 var text = ""
 let i, iSystem
 var nextVar = false
+var href = window.location.href
 const data = {
    "dev": "patYczakus",
    "playlists": [
@@ -42,9 +43,9 @@ function loading() {
         iSystem++
     }
 }
-window.onload = loading()
 window.onload = function() {
     document.getElementById("playlists").innerHTML = text
+    loading()
 }
 
 // --------------------------------------------------------------------------------------------------------------------------
@@ -81,6 +82,7 @@ function volume() {
 }
 
 //------------------------------------------
+
 function albumPlay(ID) {
     playlistID = ID
     sound_i = 0
@@ -128,4 +130,12 @@ function soundChange() /* Czyli pauza */ {
         sound.play()
         document.getElementById("pause").innerText = "⏸"
     }
+}
+
+// ---------------------------------------------------------------
+
+function loading() {
+    setTimeout(function(){
+        document.getElementById("loading-screen").classList.add("hide")
+    }, 1000)
 }
