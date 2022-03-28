@@ -136,6 +136,6 @@ function soundChange() /* Czyli pauza */ {
 
 function loading() {
     setTimeout(function(){
-        document.getElementById("loading-screen").classList.add("hide")
+        document.getElementById("loading").classList.add("hide")
     }, 1000)
 }
