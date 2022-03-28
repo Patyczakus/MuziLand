@@ -7,6 +7,25 @@ body {
     margin: 20px;
 }
 
+#loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Comforter', Arial, sans-serif;
+    color: white;
+    background-color: black;
+    font-size: 300px;
+    transition: all 0.5s ease-in-out;
+}
+
+#loading-screen.hide {
+    background-color: transparent;
+    color: transparent;
+}
+
 #header {
     margin: -20px;
     width: 100vw;
@@ -148,23 +167,4 @@ body {
 #playlists .playlistInfo > button:hover {
     border-radius: 0.5rem;
     background: rgb(6, 232, 248);
-}
-
-#loading-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    font-family: 'Comforter', Arial, sans-serif;
-    color: white;
-    background-color: black;
-    font-size: 300px;
-    transition: all 0.5s ease-in-out;
-}
-
-#loading-screen.hide {
-    background-color: transparent;
-    color: transparent;
 }
